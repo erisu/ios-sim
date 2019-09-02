@@ -19,7 +19,9 @@ class ShowSdksCommand extends BaseCommand {
 
     let output = 'Simulator SDK Roots:\n'
     runtimes.forEach(function (runtime) {
-      if (runtime.availability === '(available)') {
+      const isAvailable = runtime.availability ? runtime.availability === '(available)' : runtime.isAvailable
+
+      if (isAvailable) {
         output += `"${runtime.name}" (${runtime.buildversion})\n`
         output += '\t(unknown)\n'
       }
